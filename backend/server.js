@@ -279,4 +279,5 @@ app.post('/api/domains/verify', authenticate, (req, res) => {
   res.json({ domain: req.body.domain, verified: true });
 });
 
-app.listen(5000, () => console.log(`[INFRASTRUCTURE ENGINE] Ready on port 5000`));
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(`[INFRASTRUCTURE ENGINE] Ready on port ${PORT}`));

@@ -4,7 +4,7 @@
  * Centralized fetch wrapper that handles absolute URLs, credentials, and robust error reporting.
  */
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 export class ApiError extends Error {
   status: number;
