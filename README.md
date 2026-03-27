@@ -6,6 +6,7 @@ SendNRest is a powerful, lightweight email campaign infrastructure designed to s
 <img width="1826" height="903" alt="Screenshot (7499)" src="https://github.com/user-attachments/assets/6f3250d8-6e21-4389-a37b-a0336f73b066" />
 <img width="1804" height="902" alt="Screenshot (7500)" src="https://github.com/user-attachments/assets/29bf04ac-bf9d-40e9-9699-ea38a6b89ee2" />
 <img width="1832" height="891" alt="Screenshot (7501)" src="https://github.com/user-attachments/assets/f375d7c4-6837-45b6-a303-e308e2e7d30f" />
+<img width="1806" height="900" alt="Screenshot (7502)" src="https://github.com/user-attachments/assets/be4be97d-f868-4e71-a9a9-a13a28656de9" />
 
 ## 🌟 Key Features
 - **Campaign Management**: Compose and dispatch rich HTML email campaigns.
