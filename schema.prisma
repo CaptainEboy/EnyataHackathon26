@@ -1,0 +1,69 @@
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  // Note: In Prisma 7, the 'url' property is moved to prisma.config.ts
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  password      String
+  fullName      String?
+  workspaceName String?
+  apiKey        String     @unique @default(cuid())
+  campaigns     Campaign[]
+  contacts      Contact[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Contact {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  name         String?
+  email        String
+  status       String   @default("Subscribed") // Subscribed, Unsubscribed, Bounced
+  tags         String[] @default([])
+  lastActivity DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([userId, email])
+}
+
+model Campaign {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  title           String
+  subject         String
+  content         String
+  status          String   @default("Draft") // Draft, Sent
+  recipientsCount Int      @default(0)
+  opens           Int      @default(0)
+  clicks          Int      @default(0)
+  bounces         Int      @default(0)
+  sentAt          DateTime?
+  events          Event[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Event {
+  id         String   @id @default(cuid())
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id])
+  type       String   // OPEN, CLICK, BOUNCE
+  ip         String   @default("0.0.0.0")
+  userAgent  String   @default("Unknown")
+  createdAt  DateTime @default(now())
+}
